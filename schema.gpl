@@ -1,0 +1,82 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Admin {
+  email: String!
+  full_name: String!
+  id: ID!
+  is_active: Boolean!
+  is_creator: Boolean!
+  password: String!
+  phone: String
+}
+
+input CreateAdminInput {
+  email: String!
+  full_name: String!
+  password: String!
+  phone: String
+}
+
+input CreateUserDto {
+  full_name: String!
+  lang: String!
+  phone: String!
+  region: String!
+  role: UserRole!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  createAdmin(createAdmin: CreateAdminInput!): Admin!
+  createUser(createUser: CreateUserDto!): User!
+  removeAdmin(id: ID!): Float!
+  removeUser(id: ID!): Float!
+  updateAdmin(id: ID!, updateAdmin: UpdateAdminDto!): Admin!
+  updateUser(id: ID!, updateUser: UpdateUserDto!): User!
+}
+
+type Query {
+  findAllAdmins: [Admin!]!
+  findAllUsers: [User!]!
+  findOneAdmin(id: ID!): Admin!
+  findOneUser(id: ID!): User!
+}
+
+input UpdateAdminDto {
+  email: String
+  full_name: String
+  password: String
+  phone: String
+}
+
+input UpdateUserDto {
+  full_name: String
+  lang: String
+  phone: String
+  region: String
+  role: UserRole
+}
+
+type User {
+  created_at: DateTime!
+  full_name: String!
+  id: ID!
+  is_verified: Boolean!
+  lang: String!
+  phone: String!
+  region: String!
+  role: UserRole!
+  updated_at: DateTime!
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  USER
+}

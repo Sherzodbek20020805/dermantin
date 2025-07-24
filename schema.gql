@@ -1,0 +1,184 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Admin {
+  email: String!
+  full_name: String!
+  hashed_password: String!
+  id: ID!
+  is_active: Boolean!
+  is_creator: Boolean!
+  phone: String!
+}
+
+type Category {
+  id: ID!
+  logo: String!
+  name: String!
+}
+
+input CreateAdminInput {
+  email: String!
+  full_name: String!
+  password: String!
+  phone: String!
+}
+
+input CreateCategoryDto {
+  logo: String!
+  name: String!
+}
+
+input CreateDermatinDto {
+  category_id: Float!
+  class: String!
+  name: String!
+  prise: Float!
+  raiting: Float!
+  store_id: Float!
+}
+
+input CreateStoreDto {
+  destcription: String!
+  logo_url: String!
+  manager_id: Float!
+  name: String!
+  raiting_id: Float!
+  region: String!
+  status: String!
+}
+
+input CreateUserDto {
+  email: String!
+  full_name: String!
+  is_verifid: String!
+  lang: String!
+  password: String!
+  phone: String!
+  region: String!
+  role: String!
+}
+
+type Dermatin {
+  category_id: Float!
+  class: String!
+  id: ID!
+  name: String!
+  prise: Float!
+  raiting: Float!
+  store_id: Float!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type LogoutResponseType {
+  message: String!
+}
+
+type LogoutResponseTypeUser {
+  message: String!
+}
+
+type Mutation {
+  createAdmin(createAdminInput: CreateAdminInput!): Admin!
+  createCategory(createCategoryDto: CreateCategoryDto!): Category!
+  createDermatin(CreateDermatinDto: CreateDermatinDto!): Dermatin!
+  createStore(createStoreInput: CreateStoreDto!): Store!
+  createUser(createUserInput: CreateUserDto!): User!
+  login(input: LoginUserInput!): TokensTypeUser!
+  logout(UserId: Int!): LogoutResponseTypeUser!
+  refreshToken(UserId: Int!, refreshToken: String!): TokensTypeUser!
+  register(input: CreateUserDto!): String!
+  removeAdmin(id: Int!): Boolean!
+  removeCategory(id: ID!): Boolean!
+  removeDermatin(id: Int!): Boolean!
+  removeStore(id: Int!): Boolean!
+  removeUser(id: Int!): Boolean!
+  updateAdmin(id: Int!, updateAdminInput: UpdateAdminDto!): Admin!
+  updateCategory(id: ID!, updateCategoryDto: UpdateCategoryDto!): Category!
+  updateDermatin(UpdateDermatinDto: UpdateDermatinDto!): Dermatin!
+  updateStore(updateStoreInput: UpdateStoreDto!): Store!
+  updateUser(UpdateUserDto: UpdateUserDto!): User!
+}
+
+type Query {
+  categories: [Category!]!
+  category(id: ID!): Category!
+  dermatin(id: Int!): Dermatin!
+  dermatins: [Dermatin!]!
+  getAdmin(id: Int!): Admin!
+  getAllAdmins: [Admin!]!
+  sayHello: String!
+  store(id: Int!): Store!
+  stores: [Store!]!
+  user(id: Int!): User!
+  users: [User!]!
+}
+
+type Store {
+  destcription: String!
+  id: ID!
+  logo_url: String!
+  manager_id: Float!
+  name: String!
+  raiting_id: Float!
+  region: String!
+  status: String!
+}
+
+type TokensType {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type TokensTypeUser {
+  accessToken: String!
+  refreshToken: String!
+}
+
+input UpdateAdminDto {
+  email: String
+  full_name: String
+  id: Int!
+}
+
+input UpdateCategoryDto {
+  id: Int!
+}
+
+input UpdateDermatinDto {
+  id: Int!
+}
+
+input UpdateStoreDto {
+  id: Int!
+}
+
+input UpdateUserDto {
+  email: String
+  full_name: String
+  id: Int!
+  is_verifid: String
+  lang: String
+  password: String
+  phone: String
+  region: String
+  role: String
+}
+
+type User {
+  email: String!
+  full_name: String
+  hashed_password: String!
+  hashed_refresh_token: String
+  id: ID!
+  is_verifid: String!
+  lang: String!
+  phone: String!
+  region: String!
+  role: String!
+}
